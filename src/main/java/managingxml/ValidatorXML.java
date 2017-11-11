@@ -5,12 +5,12 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Schema;
 import javax.xml.validation.Validator;
 import org.xml.sax.SAXException;
-import java.io.FileNotFoundException;
+
 import java.io.File;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class ValidatorXML
 {
