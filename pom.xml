@@ -18,8 +18,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-            <plugin>
+            </plugin>            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
@@ -28,8 +27,41 @@
                     <includePluginDependencies>false</includePluginDependencies>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>compile</includeScope>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
+        <resources>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>${project.build.directory}/classes</targetPath>
+                <includes>
+                    <include>**/log4j2.xml</include>
+                </includes>
+            </resource>
+
+        </resources>
+
     </build>
+
 
     <dependencies>
 
@@ -37,6 +69,7 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-1.2-api</artifactId>
             <version>2.9.1</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
